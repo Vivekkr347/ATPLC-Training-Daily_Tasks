@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <style>
+        #result {
+            margin-top: 20px;
+        }
+
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #779e24;
+            border: 1px solid #63677a;
+            transition: .3s ease;
+        }
+
+        .btn:hover {
+            background: #70b368;
+            border: 1px solid #2b2d37;
+        }
+    </style>
+    <script>
+        function displayFormValues() {
+            var name = document.getElementById("name").value;
+            var mobile = document.getElementById("mobile").value;
+            var email = document.getElementById("email").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var education = [];
+            var checkboxes = document.querySelectorAll('input[name="education"]:checked');
+            for (var i = 0; i < checkboxes.length; i++) {
+                education.push(checkboxes[i].value);
+            }
+            var likeTea = document.getElementById("likeTea").value;
+
+            var result = "Name: " + name + "<br>";
+            result += "Mobile: " + mobile + "<br>";
+            result += "Email: " + email + "<br>";
+            result += "Gender: " + gender + "<br>";
+            result += "Education: " + education.join(", ") + "<br>";
+            result += "Like Tea: " + likeTea + "<br>";
+
+            document.getElementById("result").innerHTML = result;
+        }
+
+
+        function changeImage() {
+            var img = document.getElementById("image");
+            img.src = "image2.jpg";
+        }
+
+        function increaseFontSize() {
+            var element = document.getElementById("text");
+            var fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+            var currentSize = parseFloat(fontSize);
+            var newSize = currentSize + 2;
+            element.style.fontSize = newSize + "px";
+        }
+
+        function decreaseFontSize() {
+            var element = document.getElementById("text");
+            var fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+            var currentSize = parseFloat(fontSize);
+            var newSize = currentSize - 2;
+            element.style.fontSize = newSize + "px";
+        }
+
+        function showDateTime() {
+            var datetime = new Date().toLocaleString();
+            document.getElementById("datetime").innerHTML = "Current Date & Time: " + datetime;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>JavaScript Tasks</h1>
+    <form id="basicInfoForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="mobile">Mobile:</label>
+        <input type="text" id="mobile" name="mobile"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br><br>
+
+        <label for="education">Education:</label><br>
+        <input type="checkbox" id="ssc" name="education" value="SSC">
+        <label for="ssc">SSC</label><br>
+        <input type="checkbox" id="hsc" name="education" value="HSC">
+        <label for="hsc">HSC</label><br>
+        <input type="checkbox" id="bachelors" name="education" value="Bachelors">
+        <label for="bachelors">Bachelors</label><br>
+        <input type="checkbox" id="masters" name="education" value="Masters">
+        <label for="masters">Masters</label><br><br>
+
+        <label for="likeTea">Do you like tea?</label>
+        <select id="likeTea" name="likeTea">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <button class="btn" onclick="displayFormValues()">Show Form Values</button>
+
+    </form>
+
+    <div id="result"></div>
+
+    <br>
+
+    <h3>Image:</h3>
+    <img id="image" src="./image1.jpg" alt="Original Image">
+    <button class="btn" type="button" onclick="changeImage()">Change Image</button>
+
+    <h2>Font Size</h2>
+    <p id="text" style="font-size: 16px;">VIVEK KUMAR YADAV</p>
+    <br>
+
+
+    <button class="btn" onclick="increaseFontSize()">Increase Font Size</button>
+    <button class="btn" onclick="decreaseFontSize()">Decrease Font Size</button>
+
+    <br>
+
+    <h2>Date & Time</h2>
+    <button class="btn" onclick="showDateTime()">Show Date & Time</button>
+    <p id="datetime"></p>
+</body>
+
+</html>
